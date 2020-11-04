@@ -1,14 +1,13 @@
-#include <stdio.h>
-#include <stdint.h>
 #include <setjmp.h>
+#include <stdint.h>
+#include <stdio.h>
 
 #include "minctest.h"
 
 #include "buf.h"
 
-
 void test_buf_squares_operator() {
-    long *ai = 0;
+    long* ai = 0;
     for (int i = 0; i < 10000; i++)
         buf_push(ai, i);
     lequal((int)buf_size(ai), 10000);
@@ -20,7 +19,7 @@ void test_buf_squares_operator() {
 }
 
 void test_buf_grow_trunc() {
-    long *ai = 0;
+    long* ai = 0;
     buf_grow(ai, 1000);
     lequal((int)buf_capacity(ai), 1000);
     lequal((int)buf_size(ai), 0);
@@ -30,7 +29,7 @@ void test_buf_grow_trunc() {
 }
 
 void test_buf_base() {
-    float *a = 0;
+    float* a = 0;
     lok(buf_capacity(a) == 0);
     lok(buf_size(a) == 0);
     buf_push(a, 1.3f);
@@ -61,8 +60,7 @@ void test_buf_base() {
     buf_free(a);
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char* argv[]) {
     lrun("buf_push(), []", test_buf_squares_operator);
     lrun("buf_grow(), buf_trunc", test_buf_grow_trunc);
     lrun("buf_base_test", test_buf_base);

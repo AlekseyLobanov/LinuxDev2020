@@ -1,9 +1,7 @@
 #include "buf.h"
 
-void *
-buf_grow1(void *v, size_t esize, ptrdiff_t n)
-{
-    struct buf *p;
+void* buf_grow1(void* v, size_t esize, ptrdiff_t n) {
+    struct buf* p;
     size_t max = (size_t)-1 - sizeof(struct buf);
     if (v) {
         p = buf_ptr(v);
